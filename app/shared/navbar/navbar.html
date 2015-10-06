@@ -1,0 +1,29 @@
+<div class="navbar navbar-material-blue-grey-800">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="navbar-header">
+                    <img class="logo" src="assets/img/logo.png" alt="dealSearch"/>
+                </div>
+                <div class="navbar-collapse collapse navbar-responsive-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li ng-class="{'active':(curPath == 'main')}">
+                            <a href="#/ad/main"><i class="glyphicon glyphicon-th-list"></i> Каталог</a>
+                        </li>
+                        <li ng-class="{'active':(curPath == 'create')}">
+                            <a href="#/ad/create"><i class="glyphicon glyphicon-plus"></i> Добавить</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-class="{'active':(curPath == '')}">
+                            <a href="" data-toggle="modal" data-target="#simple-dialog"><i class="glyphicon glyphicon-user"></i> Вход</a>
+                        </li>
+                        <li ng-class="{'active':(curPath == '')}">
+                            <a href="" data-toggle="modal" data-target="#simple-dialog"><i class="glyphicon glyphicon-plus-sign"></i> Регистрация</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="adApp">
+<head lang="ru-RU">
+    <meta charset="UTF-8">
+    <title>dealsearch - Каталог частных объявлений</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" />
+    <link rel="stylesheet" href="assets/css/style.min.css">
+</head>
+<body>
+    <div ng-include="'app/shared/navbar/navbar.html'"></div>
+    <div ng-controller="mainController">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div ng-view></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <toasty></toasty>
+    <div ng-include="'app/shared/footer/footer.html'"></div>
+<!-- JS -->
+<!-- Others JS Files -->
+<script src="assets/libs/jquery/jquery.js"></script>
+<script src="assets/libs/bootstrap/js/bootstrap.js"></script>
+<script src="assets/libs/bootstrap-material-design/js/arrive.js"></script>
+<script src="assets/libs/bootstrap-material-design/js/material.js"></script>
+<script src="assets/libs/bootstrap-material-design/js/ripples.js"></script>
+<!-- AngularJs vDependencies -->
+<script src="assets/libs/angular/angular.concat.js"></script>
+<!-- JS App Fies -->
+<script src="app/app-module.js"></script>
+<script src="app/app-routes.js"></script>
+<script src="app/components/ad/adFactory.js"></script>
+<script src="app/components/ad/main/main.controller.js"></script>
+<script src="app/components/ad/create/create.controller.js"></script>
+<script src="app/components/ad/update/update.controller.js"></script>
+</body>
+</html>

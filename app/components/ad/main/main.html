@@ -1,0 +1,86 @@
+<div class="card">
+    <div class="col-md-12 catalogue-fix">
+        <div class="col-md-8">
+            <div class="card-header">
+                <h2>Каталог объявлений</h2>
+                <small>Актуальные объявления</small>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <form>
+                <div class="form-group index-search">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                        <input type="text" class="floating-label form-control" placeholder="Поиск" ng-model="searchAd">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div ng-show="ads.length > 0">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>
+                    <a href ng-click="sortType = 'title'; sortReverse = !sortReverse">
+                        Название
+                        <span class="glyphicon glyphicon-menu-down" ng-show="sortType == 'title' && !sortReverse"></span>
+                        <span class="glyphicon glyphicon-menu-up" ng-show="sortType == 'title' && sortReverse"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href ng-click="sortType = 'description'; sortReverse = !sortReverse">
+                        Описание
+                        <span class="glyphicon glyphicon-menu-down" ng-show="sortType == 'description' && !sortReverse"></span>
+                        <span class="glyphicon glyphicon-menu-up" ng-show="sortType == 'description' && sortReverse"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                        Имя
+                        <span class="glyphicon glyphicon-menu-down" ng-show="sortType == 'name' && !sortReverse"></span>
+                        <span class="glyphicon glyphicon-menu-up" ng-show="sortType == 'name' && sortReverse"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href ng-click="sortType = 'price'; sortReverse = !sortReverse">
+                        Цена
+                        <span class="glyphicon glyphicon-menu-down" ng-show="sortType == 'price' && !sortReverse"></span>
+                        <span class="glyphicon glyphicon-menu-up" ng-show="sortType == 'price' && sortReverse"></span>
+                    </a>
+                </td>
+                <td style="width:80px;">Действие</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in ads | orderBy:sortType:sortReverse | filter: searchAd" ng-class="getTrClass(data.type)">
+                <td class="col-md-3">{{data.title}}</td>
+                <td class="col-md-3">{{data.description}}</td>
+                <td class="col-md-2">{{data.name}}</td>
+                <td class="col-md-2">{{data.price}}</td>
+                <td class="col-md-2">
+                    <a class="btn btn-success btn-xs" href="#/ad/update/{{data.id}}">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+					<span ng-if="$first && ads.length == 1">
+						<a class="btn btn-danger btn-xs" ng-click="deleteAd(data.id, 'last')">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+					</span>
+					<span ng-if="ads.length > 1">
+						<a class="btn btn-danger btn-xs" ng-click="deleteAd(data.id)">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+					</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="ads.length == 0">
+        <h3>Объявлений не найдено</h3>
+        <a class="btn btn-success" href="#/ad/create">
+            <i class="glyphicon glyphicon-plus"></i> Добавить
+        </a>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Редактировать объявление</h2>
+        <small>Внесите необходимые изменения в форму и нажмите "Сохранить"</small>
+    </div>
+    <form role="form" name="adsForm">
+        <input type="hidden" name="updated_at" ng-init="ad.updated_at=currentTime">
+        <div class="col-md-12">
+            <div class="col-md-6 form-first-col">
+                <div class= "form-group" ng-class="{error: adsForm.type.$invalid}">
+                    <div class="custom-label-update">Вы выступаете как</div>
+                    <div class="radio radio-success" ng-init="ad.type">
+                        <label class="form-radio"><input type="radio" name="type" value="частное лицо" ng-model="ad.type">Частное лицо</label>
+                        <label class="form-radio"><input type="radio" name="type" value="компания" ng-model="ad.type">Компания</label>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{error: adsForm.name.$invalid}">
+                    <div>
+                        <input name="name" type="text" class="floating-label form-control" placeholder="Ваше имя" ng-model="ad.name"/>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{error: adsForm.email.$invalid}">
+                    <div>
+                        <input name="email" type="text" class="floating-label form-control" placeholder="Электронная почта" ng-model="ad.email"/>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{error: adsForm.phone.$invalid}">
+                    <div>
+                        <input name="phone" type= "text" class="floating-label form-control" placeholder="Номер телефона" ng-model="ad.phone"/>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{error: ad.allow_mails.$invalid}">
+                    <div class="custom-label-update">Уведомления</div>
+                    <div class="checkbox">
+                        <label><input name="allow_mails" type="checkbox" ng-model="ad.allow_mails" ng-false-value="1" ng-true-value="0"> Я не хочу получать вопросы по объявлению по e-mail</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class= "form-group" ng-class="{error: adsForm.city.$invalid}">
+                    <div>
+                        <select class="floating-label form-control" placeholder="Город" ng-model="ad.city" data-ng-options="option.id as option.name for option in cityOptions">
+                        </select>
+                    </div>
+                </div>
+                <div class= "form-group" ng-class="{error: adsForm.category.$invalid}">
+                    <div>
+                        <select class="floating-label form-control" placeholder="Категория" ng-model="ad.category" data-ng-options="option.id as option.name group by option.group for option in categoryOptions">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{error: adsForm.title.$invalid}">
+                    <div>
+                        <input name="title" type= "text" class="floating-label form-control" placeholder="Название объявления" ng-model="ad.title" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <textarea name="description" class="floating-label form-control" placeholder="Описание" ng-model="ad.description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{error: adsForm.price.$invalid}">
+                    <div>
+                        <input name="price" type="text" class= "floating-label form-control" placeholder="Цена" ng-model="ad.price"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#/ad/index" class="btn btn-default">Отмена</a>
+        <button type="submit" class="btn btn-success" ng-click="updateAd(ad)" ng-disabled="adsForm.$invalid">Сохранить</button>
+    </form>
+</div>
